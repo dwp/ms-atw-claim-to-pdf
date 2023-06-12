@@ -1,0 +1,61 @@
+# Changelog
+
+## 1.10.0 - (2023-05-26)
+* adding open source functionality for a github repository
+* Update all fragments to latest version
+* Update dependency versions
+
+## 1.9.0 - (2023-04-19)
+* Fix to temporarily support the old and new data model for support worker received support which can be documented in hours or hours and minutes
+* Update all fragments to latest
+
+## 1.8.0 - (2023-04-11)
+* Add minutes for support worker so support received can be documented in hours and minutes
+* Update all fragments to latest
+* Update dependency versions
+
+## 1.7.0 - (2023-03-06)
+* Update to model to use homeNumber and mobileNumber instead of phoneNumber
+* Move to saas runners
+* Update all fragments to latest
+* Update dependency versions
+
+## 1.6.0 - (2023-01-10)
+* Made change to fix issue with £ character.
+* Updated fragments to be the latest
+* Distroless version bump
+* OWASP version update (7.4.4)
+
+## 1.5.0 - (2022-12-6)
+* Made change to fix issue with & character.
+* Made change to pdfs Create/Amend personal details and Create/Amend payee details form headers
+* Updated fragments to be the latest
+
+## 1.4.0 - (2022-11-8)
+
+* Made changes to pdfs and pdf tests, they now read "Payee Details" rather than "Details of person or company being paid"
+* Removed the following line from all pdfs "The amount we’ll pay back will be less than the claim total. 
+This is because we’ll deduct any amounts the claimant or their employer have agreed to pay."
+* Update Spring Boot version (2.7.5)
+* Snakeyaml version update (1.33)
+* Distroless version bump
+* Update all fragments to latest
+
+## 1.3.0 - (2022-10-11)
+
+* Upgrade Spring Boot (2.7.3)
+* Address Snakeyaml vulnerability in 1.30
+* Update all fragments to latest
+
+## 1.2.0 - (2022-08-19)
+
+* Updates fragment version for trivy container
+* Fixed generated pdfs content issues
+
+## 1.1.0 - (2022-08-01)
+
+* Release
+
+## 1.0.0 - (2022-07-18)
+
+* Initial release

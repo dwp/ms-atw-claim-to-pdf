@@ -1,0 +1,28 @@
+app_name: @project.artifactId@
+app_version: @project.version@
+
+server:
+  port: 9015
+services:
+  msHtmlToPdfA:
+    baseUri: "http://localhost:6677"
+aws:
+  s3:
+    default-endpoint: http://localhost:4566
+    bucket-name: atw-claim
+  encryption:
+    enabled: false
+    kmsOverride: http://localhost:4566
+    dataKey: alias/test_evidence_s3_id
+cloud:
+  aws:
+    stack:
+      auto: false
+    region:
+      static: eu-west-2
+      auto: false
+    credentials:
+      instanceProfile: false
+      accessKey: foo
+      secretKey: bars
+

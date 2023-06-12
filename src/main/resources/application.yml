@@ -1,0 +1,25 @@
+app_name: @project.artifactId@
+app_version: @project.version@
+
+server:
+  port: 9015
+services:
+  msHtmlToPdfA:
+    baseUri: ${HTMLTOPDFA_URI}
+aws:
+  s3:
+    default-endpoint: ${AWS_S3_DEFAULT_ENDPOINT:}
+    bucket-name: ${AWS_BUCKET_NAME}
+  encryption:
+    enabled: ${AWS_S3_ENCRYPT_ENABLE:true}
+    kmsOverride: ${AWS_ENCRYPTION_KMS_OVERRIDE:}
+    dataKey: ${AWS_ENCRYPTION_DATA_KEY:}
+cloud:
+  aws:
+    stack:
+      auto: false
+    region:
+      static: ${AWS_REGION}
+      auto: false
+    credentials:
+      instanceProfile: false
