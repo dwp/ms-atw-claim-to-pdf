@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.11.0 - (2023-06-20)
+* Update all fragments to latest version
+* Update dependency versions
+* Update cron schedule to run weekdays only
+
 ## 1.10.0 - (2023-05-26)
 * adding open source functionality for a github repository
 * Update all fragments to latest version
