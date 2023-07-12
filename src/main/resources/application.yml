@@ -23,3 +23,8 @@ cloud:
       auto: false
     credentials:
       instanceProfile: false
+
+spring:
+  logging:
+    level:
+      ROOT: INFO

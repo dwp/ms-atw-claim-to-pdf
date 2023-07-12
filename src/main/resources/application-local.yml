@@ -26,3 +26,8 @@ cloud:
       accessKey: foo
       secretKey: bars
 
+spring:
+  logging:
+    level:
+      ROOT: INFO
+
