@@ -6,8 +6,6 @@
    ]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.springframework.*$</packageUrl>
         <cve>CVE-2016-1000027</cve>
-        <cve>CVE-2023-20861</cve>
-        <cve>CVE-2023-20860</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[
@@ -15,15 +13,6 @@
    ]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.yaml.snakeyaml.*$</packageUrl>
         <cve>CVE-2022-1471</cve>
-        <cve>CVE-2021-4235</cve>
-        <cve>CVE-2022-3064</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-   file name: bouncycastle* // this is temporary until bouncycastle releases a fix.
-   ]]></notes>
-        <packageUrl regex="true">^pkg:maven/org\.bouncycastle.*$</packageUrl>
-        <cve>CVE-2022-45146</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[
@@ -31,6 +20,7 @@
    ]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.json.*$</packageUrl>
         <cve>CVE-2022-45688</cve>
+        <cve>CVE-2023-5072</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[
