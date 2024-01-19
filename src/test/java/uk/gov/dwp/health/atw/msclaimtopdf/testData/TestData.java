@@ -150,6 +150,21 @@ public class TestData {
   public static List<EquipmentOrAdaptation> equipmentOrAdaptations =
           singletonList(equipmentOrAdaptation);
 
+  public static Date dateOfInvoice = Date.builder()
+          .dd("12")
+          .mm("04")
+          .yyyy("2003")
+          .build();
+
+  public static AdaptationToVehicleClaim adaptationToVehicle = AdaptationToVehicleClaim.builder()
+      .description("Item 1")
+      .dateOfInvoice(dateOfInvoice)
+      .build();
+
+  public static AdaptationToVehicle adaptationToVehicles = AdaptationToVehicle.builder()
+      .claimDescription(singletonList(adaptationToVehicle))
+      .build();
+
   public static Claimant claimant = Claimant.builder()
           .company("Apple Inc")
           .emailAddress("test@appletest.com")

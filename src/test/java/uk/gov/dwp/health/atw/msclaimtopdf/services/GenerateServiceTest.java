@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static uk.gov.dwp.health.atw.msclaimtopdf.testData.AdaptationToVehicleTestData.validAdaptationToVehicleSubmitRequest;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.ContactInformationTestData.submittedContactInformationRequest;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.EquipmentOrAdaptationTestData.validEquipmentOrAdaptationSubmitRequest;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.NewPayeeDetailsTestData.newPayeeDetailsRequest;
@@ -81,6 +82,20 @@ class GenerateServiceTest {
     when(s3Repository.createFile(any(byte[].class), anyString())).thenReturn(responseFileKey);
 
     assertEquals(responseFileKey, generateService.generateFormAndUploadPdf(validEquipmentOrAdaptationSubmitRequest));
+
+    verify(msHtmlToPdfaConnector, times(1)).post(anyString());
+    verify(s3Repository, times(1)).createFile(any(byte[].class), anyString());
+  }
+
+  @Test
+  @DisplayName("generate adaptation to vehicle html and upload pdf successful")
+  void generateAdaptationToVehicleFormAndUploadPdfSuccessful() throws FileUploadException {
+    String responseFileKey = "claim-forms/" + validAdaptationToVehicleSubmitRequest.getClaimType() + validAdaptationToVehicleSubmitRequest.getId()+ "/" + uuid;
+
+    when(msHtmlToPdfaConnector.post(anyString())).thenReturn(new byte[0]);
+    when(s3Repository.createFile(any(byte[].class), anyString())).thenReturn(responseFileKey);
+
+    assertEquals(responseFileKey, generateService.generateFormAndUploadPdf(validAdaptationToVehicleSubmitRequest));
 
     verify(msHtmlToPdfaConnector, times(1)).post(anyString());
     verify(s3Repository, times(1)).createFile(any(byte[].class), anyString());

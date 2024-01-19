@@ -21,7 +21,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
       "surname": "Surtsson",
       "dateOfBirth": "1930-11-12",
       "emailAddress": "Odin.Surtsson@gmail.com", //optional
-      "phoneNumber": "07700900630", //optional
+      "homeNumber": "07700900630", //optional
       "company": "Apple Inc",
       "address": {
         "address1": "1 The Street",
@@ -156,7 +156,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "surname": "Surtsson",
         "dateOfBirth": "1930-11-12",
         "emailAddress": "Odin.Surtsson@gmail.com", //optional
-        "phoneNumber": "07700900630", //optional
+        "homeNumber": "07700900630", //optional
         "company": "Apple Inc",
         "address": {
           "address1": "1 The Street",
@@ -224,6 +224,96 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
 }
 ```
 
+
+
+### POST /generate/claim-form for Adaptation to Vehicle
+```json5
+{
+    "id": 6,
+    "createdDate": "2022-02-17T15:35:14.432",
+    "lastModifiedDate": "2022-02-17T15:35:14.432",
+    "claimStatus": "AWAITING_AGENT_APPROVAL",
+    "nino": "AA370773A",
+    "claimType": "ADAPTATION_TO_VEHICLE",
+    "cost": 2211.0,
+    "hasContributions": true,
+    "atwNumber" : "ATW1234567",
+      "claimant": {
+        "forename": "Odin",
+        "surname": "Surtsson",
+        "dateOfBirth": "1930-11-12",
+        "emailAddress": "Odin.Surtsson@gmail.com", //optional
+        "homeNumber": "07700900630", //optional
+        "company": "Apple Inc",
+        "address": {
+          "address1": "1 The Street",
+          "address2": "Village Name",
+          "address3": "Town",
+          "address4": "County",
+          "postcode": "NE26 4RS"
+        }
+      },
+   "payee": {
+        "newPayee": true, //for AV newPayee must be true
+        "details": {
+            "fullName": "George Herbert",
+            "emailAddress": "name@name.com"
+        },
+        "address": {
+            "address1": "THE COTTAGE",
+            "address2": "ST. MARYS ISLAND",
+            "address3": "WHITLEY BAY",
+            "address4": "WHITLEY BAY",
+            "postcode": "NE26 4RS"
+        },
+        "bankDetails": {
+            "accountHolderName": "George Herbert",
+            "sortCode": "000004",
+            "accountNumber": "12345677",
+            "rollNumber": "12345677"
+        }
+    },
+    "declarationVersion": 2.1,
+    "evidence": [
+        {
+            "fileId": "633ce73b-1414-433e-8a08-72449a0244fc/144b2aca-996d-4c27-bdf2-1e9b418874d3",
+            "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
+        }
+    ],
+    "claim": [
+        {
+            "description": "Item 1",
+            "dateOfInvoice": {
+                "dd": "22",
+                "mm": "11",
+                "yyyy": "2020"
+            }
+        },
+        {
+            "description": "Item 2",
+            "dateOfInvoice": {
+                "dd": "18",
+                "mm": "12",
+                "yyyy": "2020"
+            }
+        }
+    ]
+}
+```
+
+#### Response
+
+200 - Ok
+
+```json5
+{
+"fileId": "claim-forms/ADAPTATION_TO_VEHICLE/6/c5de70cc-66c8-4012-be55-be1e2f42f700"
+}
+```
+
+
+
+
 ### POST /generate/claim-form for Travel to Work
 
 ```json5
@@ -242,7 +332,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "surname": "Surtsson",
         "dateOfBirth": "1930-11-12",
         "emailAddress": "Odin.Surtsson@gmail.com", //optional
-        "phoneNumber": "07700900630", //optional
+        "homeNumber": "07700900630", //optional
         "company": "Apple Inc",
         "address": {
           "address1": "1 The Street",
@@ -355,7 +445,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "surname": "Ledgrave",
         "dateOfBirth": "1930-11-12",
         "emailAddress": "martha.ledgrave@email.com", //optional
-        "phoneNumber": "07627847834", //optional
+        "homeNumber": "07627847834", //optional
         "address": {
             "address1": "THE COTTAGE",
             "address2": "ST. MARYS ISLAND",
@@ -369,7 +459,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "surname": "Ledgrave",
         "dateOfBirth": "1930-11-12",
         "emailAddress": "martha.ledgrave@hotmail.com", //optional
-        "phoneNumber": "07627847834", //optional
+        "homeNumber": "07627847834", //optional
         "address": {
             "address1": "15 Redburry Grove",
             "address2": "Bramhope",
@@ -403,7 +493,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "forename": "Martha",
     "surname": "Ledgrave",
     "emailAddress": "martha.ledgrave@email.com", //optional
-    "phoneNumber": "07627847834", //optional
+    "homeNumber": "07627847834", //optional
     "address": {
       "address1": "THE COTTAGE",
       "address2": "ST. MARYS ISLAND",

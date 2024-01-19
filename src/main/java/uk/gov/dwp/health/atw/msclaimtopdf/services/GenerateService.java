@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import uk.gov.dwp.health.atw.msclaimtopdf.connector.MsHtmlToPdfaConnector;
 import uk.gov.dwp.health.atw.msclaimtopdf.exceptions.FileUploadException;
+import uk.gov.dwp.health.atw.msclaimtopdf.forms.AdaptationToVehicleForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.EquipmentOrAdaptationForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.NewOrAmendedContactDetailsForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.NewPayeeDetailsForm;
@@ -50,6 +51,8 @@ public class GenerateService {
         return SupportWorkerForm.generateForm(claimRequest);
       case EQUIPMENT_OR_ADAPTATION:
         return EquipmentOrAdaptationForm.generateForm(claimRequest);
+      case ADAPTATION_TO_VEHICLE:
+        return AdaptationToVehicleForm.generateForm(claimRequest);
       default:
         throw new IllegalArgumentException(
             "Claim type not supported " + claimRequest.getClaimType());

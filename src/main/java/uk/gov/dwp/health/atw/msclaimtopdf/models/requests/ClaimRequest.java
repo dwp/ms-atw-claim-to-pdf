@@ -31,7 +31,9 @@ import uk.gov.dwp.health.atw.msclaimtopdf.models.enums.ClaimType;
     @JsonSubTypes.Type(value = EquipmentOrAdaptationClaimRequest.class,
         name = "EQUIPMENT_OR_ADAPTATION"),
     @JsonSubTypes.Type(value = TravelToWorkClaimRequest.class, name = "TRAVEL_TO_WORK"),
-    @JsonSubTypes.Type(value = SupportWorkerClaimRequest.class, name = "SUPPORT_WORKER")
+    @JsonSubTypes.Type(value = SupportWorkerClaimRequest.class, name = "SUPPORT_WORKER"),
+    @JsonSubTypes.Type(value = AdaptationToVehicleClaimRequest.class,
+        name = "ADAPTATION_TO_VEHICLE")
 })
 public class ClaimRequest {
 

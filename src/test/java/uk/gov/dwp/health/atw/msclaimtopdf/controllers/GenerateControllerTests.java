@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static uk.gov.dwp.health.atw.msclaimtopdf.testData.AdaptationToVehicleTestData.validAdaptationToVehicleSubmitRequest;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.ContactInformationTestData.submittedContactInformationRequest;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.EquipmentOrAdaptationTestData.validEquipmentOrAdaptationSubmitRequest;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.NewPayeeDetailsTestData.newPayeeDetailsRequest;
@@ -99,6 +100,24 @@ public class GenerateControllerTests {
     mockMvc.perform(post("/generate/claim-form")
             .contentType(MediaType.APPLICATION_JSON)
             .content(asJsonString(travelToWorkTestData.taxiTravelTypeWhoIsEmployedTWClaimRequest)))
+        .andExpect(status().isOk())
+        .andExpect(content().json(asJsonString(response)));
+
+    verify(generateService, times(1)).generateFormAndUploadPdf(any());
+  }
+
+  @Test
+  @DisplayName("/generate/claim-form endpoint for Adaptation to Vehicle - should return 200")
+  void callGenerateForAdaptationToVehicle() throws Exception {
+
+    GeneratedResponse response = new GeneratedResponse("7/435b379c-c84f-427a-903c-0925ba1418b1");
+
+    when(generateService.generateFormAndUploadPdf(any(ClaimRequest.class)))
+        .thenReturn("7/435b379c-c84f-427a-903c-0925ba1418b1");
+
+    mockMvc.perform(post("/generate/claim-form")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(asJsonString(validAdaptationToVehicleSubmitRequest)))
         .andExpect(status().isOk())
         .andExpect(content().json(asJsonString(response)));
 
