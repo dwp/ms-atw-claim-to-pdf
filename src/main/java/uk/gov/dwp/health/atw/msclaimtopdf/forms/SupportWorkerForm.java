@@ -29,6 +29,7 @@ import java.text.DecimalFormat;
 import java.time.Duration;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.Claimant;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.SupportWorker;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.SupportWorkerClaim;
@@ -97,6 +98,7 @@ public class SupportWorkerForm {
     Map<String, SupportWorker> supportWorkerClaims = supportWorkerClaimRequest.getClaim();
     DlTag dlTag = new DlTag();
 
+    String nameOfSupport = supportWorkerClaimRequest.getNameOfSupport();
     boolean timeOfSupportMode = true;
     for (SupportWorker supportWorker : supportWorkerClaims.values()) {
 
@@ -109,7 +111,8 @@ public class SupportWorkerForm {
       String monthWithYear = new DateFormatSymbols().getMonths()[month - 1] + " " + year;
       dlTag.with(
           divTagWithDtAndDdTags("Month support was received", monthWithYear),
-          getDaysSupportWasReceived(supportWorker, month, monthWithYear, timeOfSupportMode));
+          getDaysSupportWasReceived(supportWorker, month, monthWithYear, timeOfSupportMode,
+              nameOfSupport));
     }
 
     dlTag.with(
@@ -123,7 +126,8 @@ public class SupportWorkerForm {
   }
 
   private static DivTag getDaysSupportWasReceived(SupportWorker supportWorker, int month,
-                                                  String monthWithYear, boolean timeOfSupportMode) {
+                                                  String monthWithYear, boolean timeOfSupportMode,
+                                                  String nameOfSupport) {
     DdTag ddTag = new DdTag();
     for (SupportWorkerClaim supportWorkerClaim : supportWorker.getSupportWorkerClaims()) {
 
@@ -137,7 +141,10 @@ public class SupportWorkerForm {
                       supportWorkerClaim.getHoursOfSupport() + " Hours")
               ),
               br(),
-              join(escapeXml11(supportWorkerClaim.getNameOfSupport()))
+              join(escapeXml11(
+                  nameOfSupport != null && !nameOfSupport.isBlank() ? nameOfSupport :
+                      supportWorkerClaim.getNameOfSupport()
+              ))
           )
       );
     }

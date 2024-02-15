@@ -4,7 +4,6 @@ import j2html.tags.specialized.HtmlTag;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import uk.gov.dwp.health.atw.msclaimtopdf.testData.EquipmentOrAdaptationTestData;
 import uk.gov.dwp.health.atw.msclaimtopdf.testData.SupportWorkerTestData;
 import uk.gov.dwp.health.atw.msclaimtopdf.utils.TestUtils;
 
@@ -23,9 +22,9 @@ class SupportWorkerFormTest {
     }
 
     @Test
-    void generateSuccessfulFormWithSupportHoursToTwoDecimal() {
+    void generateSuccessfulFormWithSupportHoursInTimeOfSupportOnly() {
         HtmlTag htmlTag = SupportWorkerForm.
-                generateForm(SupportWorkerTestData.supportWorkerWhoIsEmployedWithSupportHoursToTwoDecimalPlacesClaimRequest);
+                generateForm(SupportWorkerTestData.supportWorkerWhoIsEmployedWithSupportHoursInTimeOfSupportOnlyClaimRequest);
         assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerWithSupportHoursToTwoDecimalPlaces.html"),
                 htmlTag.render());
     }
@@ -40,10 +39,10 @@ class SupportWorkerFormTest {
     }
 
     @Test
-    void generateSuccessfulFormWithSkippingOptionalField() {
+    void generateSuccessfulFormWithSkippingWorkplaceContactOptionalField() {
         HtmlTag htmlTag = SupportWorkerForm
                 .generateForm(
-                        SupportWorkerTestData.supportWorkerClaimRequestWithOptionalFieldsMissing);
+                        SupportWorkerTestData.supportWorkerClaimRequestWithOptionalWorkplaceContactFieldsMissing);
         assertEquals(TestUtils.getFileAsString(
                         RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerOptionalFieldSkipped.html"),
                 htmlTag.render());
@@ -57,5 +56,15 @@ class SupportWorkerFormTest {
         assertEquals(TestUtils.getFileAsString(
                         RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerWithHoursOfSupportClaims.html"),
                 htmlTag.render());
+    }
+
+    @Test
+    void generateSuccessfulFormWithNameOfSupportOnSupportWorkerClaim() {
+        HtmlTag htmlTag = SupportWorkerForm
+            .generateForm(
+                SupportWorkerTestData.supportWorkerClaimRequestWithNameOfSupportOnSupportWorkerClaim);
+        assertEquals(TestUtils.getFileAsString(
+                RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerWithNameOfSupportOnSupportWorkerClaim.html"),
+            htmlTag.render());
     }
 }

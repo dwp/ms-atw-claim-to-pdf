@@ -62,6 +62,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         }
     },
     "declarationVersion": 2.1,
+    "nameOfSupport": "person 1", //Optional
     "claim": {
         "0": {
             "monthYear": {
@@ -74,16 +75,14 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
                     "timeOfSupport": {
                         "hoursOfSupport": 2,
                         "minutesOfSupport": 15
-                    },
-                    "nameOfSupport": "person 1"
+                    }                   
                 },
                 {
                     "dayOfSupport": "02",
                     "timeOfSupport": {
                         "hoursOfSupport": 3,
                         "minutesOfSupport": 0
-                    },
-                    "nameOfSupport": "Person 2"
+                    }
                 },
             ]
         },
@@ -98,16 +97,14 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
                     "timeOfSupport": {
                         "hoursOfSupport": 12,
                         "minutesOfSupport": 15
-                    },
-                    "nameOfSupport": null
+                    }
                 },
                 {
                     "dayOfSupport": "14",
                     "timeOfSupport": {
                         "hoursOfSupport": 0,
                         "minutesOfSupport": 15
-                    },
-                    "nameOfSupport": "Person 4"
+                    }
                 }
             ]
         }

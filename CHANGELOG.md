@@ -1,5 +1,11 @@
 # Changelog
 
+# 1.16.0 - (2024-02-13)
+* Updated dependency versions
+* Update fragments
+* Updated distroless version
+* Fix to temporarily support the old and new data model for support worker for how the nameOfSupport is received
+
 # 1.15.0 - (2024-01-15)
 * Updated dependency versions
 * Update fragments
