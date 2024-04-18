@@ -22,6 +22,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import uk.gov.dwp.health.atw.msclaimtopdf.connector.MsHtmlToPdfaConnector;
 import uk.gov.dwp.health.atw.msclaimtopdf.exceptions.FileUploadException;
 import uk.gov.dwp.health.atw.msclaimtopdf.repositories.S3Repository;
+import uk.gov.dwp.health.atw.msclaimtopdf.testData.TravelInWorkTestData;
 import uk.gov.dwp.health.atw.msclaimtopdf.testData.TravelToWorkTestData;
 
 @SpringBootTest(classes = GenerateService.class)
@@ -39,10 +40,12 @@ class GenerateServiceTest {
   String uuid = UUID.randomUUID().toString();
 
   TravelToWorkTestData travelToWorkTestData;
+  TravelInWorkTestData travelInWorkTestData;
 
   @BeforeEach
   void setup() {
     travelToWorkTestData  = new TravelToWorkTestData();
+    travelInWorkTestData  = new TravelInWorkTestData();
   }
 
   @Test
@@ -68,6 +71,20 @@ class GenerateServiceTest {
     when(s3Repository.createFile(any(byte[].class), anyString())).thenReturn(responseFileKey);
 
     assertEquals(responseFileKey, generateService.generateFormAndUploadPdf(travelToWorkTestData.taxiTravelToWorkOptionalFieldSkipped));
+
+    verify(msHtmlToPdfaConnector, times(1)).post(anyString());
+    verify(s3Repository, times(1)).createFile(any(byte[].class), anyString());
+  }
+
+  @Test
+  @DisplayName("generate travel in work html and upload pdf successful")
+  void generateTravelInWorkFormAndUploadPdfSuccessful() throws FileUploadException {
+    String responseFileKey = "claim-forms/" + travelInWorkTestData.taxiTravelInWorkOptionalFieldSkipped.getClaimType() + travelInWorkTestData.taxiTravelInWorkOptionalFieldSkipped.getId()+ "/" + uuid;
+
+    when(msHtmlToPdfaConnector.post(anyString())).thenReturn(new byte[0]);
+    when(s3Repository.createFile(any(byte[].class), anyString())).thenReturn(responseFileKey);
+
+    assertEquals(responseFileKey, generateService.generateFormAndUploadPdf(travelInWorkTestData.taxiTravelInWorkOptionalFieldSkipped));
 
     verify(msHtmlToPdfaConnector, times(1)).post(anyString());
     verify(s3Repository, times(1)).createFile(any(byte[].class), anyString());

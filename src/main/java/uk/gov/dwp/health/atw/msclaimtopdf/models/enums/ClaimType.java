@@ -4,7 +4,8 @@ public enum ClaimType {
   EQUIPMENT_OR_ADAPTATION("Specialist equipment"),
   TRAVEL_TO_WORK("Travel to or from work"),
   SUPPORT_WORKER("Support worker"),
-  ADAPTATION_TO_VEHICLE("Adaptation to Vehicle");
+  ADAPTATION_TO_VEHICLE("Adaptation to Vehicle"),
+  TRAVEL_IN_WORK("Travel during work");
 
   private final String label;
 

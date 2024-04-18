@@ -166,8 +166,8 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
    "payee": {
         "newPayee": true, //for EA newPayee must be true
         "details": {
-            "fullName": "George Herbert",
-            "emailAddress": "name@name.com"
+            "fullName": "INeed Paying",
+            "emailAddress": "payment@now.com"
         },
         "address": {
             "address1": "THE COTTAGE",
@@ -177,7 +177,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
             "postcode": "NE26 4RS"
         },
         "bankDetails": {
-            "accountHolderName": "George Herbert",
+            "accountHolderName": "Ineed Paying",
             "sortCode": "000004",
             "accountNumber": "12345677",
             "rollNumber": "12345677"
@@ -253,8 +253,8 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
    "payee": {
         "newPayee": true, //for AV newPayee must be true
         "details": {
-            "fullName": "George Herbert",
-            "emailAddress": "name@name.com"
+            "fullName": "Ineed Paying",
+            "emailAddress": "payment@now.com"
         },
         "address": {
             "address1": "THE COTTAGE",
@@ -264,7 +264,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
             "postcode": "NE26 4RS"
         },
         "bankDetails": {
-            "accountHolderName": "George Herbert",
+            "accountHolderName": "Ineed Paying",
             "sortCode": "000004",
             "accountNumber": "12345677",
             "rollNumber": "12345677"
@@ -308,9 +308,6 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
 }
 ```
 
-
-
-
 ### POST /generate/claim-form for Travel to Work
 
 ```json5
@@ -342,8 +339,8 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
   "payee": { // Same as SW and EA
     "newPayee": true,
     "details": {
-            "fullName": "George Herbert",
-            "emailAddress": "name@name.com"// Optional if newPayee is set to false
+            "fullName": "Ineed Paying",
+            "emailAddress": "payment@now.com"// Optional if newPayee is set to false
         },
         "address": {
             "address1": "THE COTTAGE",
@@ -353,7 +350,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
             "postcode": "NE26 4RS"
         },
         "bankDetails": {
-            "accountHolderName": "George Herbert",
+            "accountHolderName": "Ineed Paying",
             "sortCode": "000004",
             "accountNumber": "12345677",
             "rollNumber": "12345677"
@@ -428,6 +425,153 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "fileId": "claim-forms/TRAVEL_TO_WORK/9/3f72dbc7-a6cd-4615-b8fe-52fd28906aa0"
 }
 ```
+
+### POST /generate/claim-form for Travel in Work
+
+```json5
+{
+  "id": 9,
+  "createdDate": "2024-02-27T11:03:11.594",
+  "lastModifiedDate": "2024-02-27T13:46:00.123",
+  "claimStatus": "COUNTER_SIGN_APPROVED",
+  "nino": "CS700100A",
+  "atwNumber": "ATW1234567",
+  "claimType": "TRAVEL_IN_WORK",
+  "cost": 2211.0,
+  "hasContributions": true,
+  "claimant": {
+    "forename": "Odin",
+    "surname": "Surtsson",
+    "dateOfBirth": "1930-11-22",
+    "emailAddress": "Odin.Surtsson@gmail.com",  //optional
+    "homeNumber": "01233665544",  //optional
+    "mobileNumber": "07700900630",
+    "address": {
+      "address1": "1 The Street",
+      "address2": "Village Name",
+      "address3": "Town",
+      "address4": "County",
+      "postcode": "NE26 4RS"
+    },
+    "company": "Company 1"
+  },
+  "payee": { // Same as SW, TW, AV and EA
+    "details": {
+      "fullName": "INeed Paying",
+      "emailAddress": "name@name.com"// Optional if newPayee is set to false
+    },
+    "address": {
+      "address1": "THE COTTAGE",
+      "address2": "ST. MARYS ISLAND",
+      "address3": "WHITLEY BAY",
+      "address4": "WHITLEY BAY",
+      "postcode": "NE26 4RS"
+    },
+    "bankDetails": {
+      "accountHolderName": "INeed Paying",
+      "sortCode": "000004",
+      "accountNumber": "12345677",
+      "rollNumber": "12345677"
+    },
+    "newPayee": true
+  },
+  "declarationVersion": 2.1,
+  "journeyContext": {
+    "data": {
+      "equipment-cost": {
+        "cost": 123.2
+      }
+    }
+  },
+  "previousClaimId": 3,
+  "documentBatchRequestId": null,
+  "workplaceContact": {
+    "emailAddress": "Count@sign.com",
+    "fullName": "Count Signer",
+    "organisation": "bq bridl",
+    "jobTitle": "boss2",
+    "address": {
+      "address1": "b q bridl",
+      "address2": "ST. MARYS ISLAND",
+      "address3": "WHITLEY BAY",
+      "address4": "WHITLEY BAY",
+      "postcode": "NE26 4RS"
+    },
+    "updatedOn": "2024-02-27T13:46:00.116",
+    "employmentStatus": "employed",
+    "declarationVersion": 3.0
+  },
+  "evidence": [ // Same as SW, TW, AV and EA
+    {
+      "fileId": "633ce73b-1414-433e-8a08-72449a0244fc/144b2aca-996d-4c27-bdf2-1e9b418874d3",
+      "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
+    }
+  ],
+  "totalMileage": 2,
+  "claim": {
+    "0": {
+      "monthYear": {
+        "mm": "04",
+        "yyyy": "2020"
+      },
+      "claim": [
+        {
+          "dayOfTravel": 12,
+          "startPostcode": "xx11 1xx",
+          "endPostcode": "xx11 2xx",
+          "costOfTravel": 13.0 // All fields are required. No optional fields as this is a TIW specific field
+        },
+        {
+          "dayOfTravel": 13,
+          "startPostcode": "xx11 1xx",
+          "endPostcode": "xx11 2xx",
+          "costOfTravel": 14.0
+        },
+        {
+          "dayOfTravel": 14,
+          "startPostcode": "xx11 1xx",
+          "endPostcode": "xx11 2xx",
+          "costOfTravel": 15.0
+        }
+      ]
+    },
+    "1": {
+      "monthYear": {
+        "mm": "05",
+        "yyyy": "2020"
+      },
+      "claim": [
+        {
+          "dayOfTravel": 13,
+          "startPostcode": "xx11 1xx",
+          "endPostcode": "xx11 2xx",
+          "costOfTravel": 14.0
+        },
+        {
+          "dayOfTravel": 14,
+          "startPostcode": "xx11 1xx",
+          "endPostcode": "xx11 2xx",
+          "costOfTravel": 15.0
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Response
+
+200 - Ok
+
+```json5
+{
+    "fileId": "claim-forms/TRAVEL_IN_WORK/9/3f72dbc7-a6cd-4615-b8fe-52fd28906aa0"
+}
+```
+
+
+
+
 
 ### POST /generate/update-contact-details
 

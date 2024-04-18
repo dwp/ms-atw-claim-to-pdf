@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import java.time.LocalDateTime;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +30,7 @@ import uk.gov.dwp.health.atw.msclaimtopdf.models.enums.ClaimType;
     @JsonSubTypes.Type(value = EquipmentOrAdaptationClaimRequest.class,
         name = "EQUIPMENT_OR_ADAPTATION"),
     @JsonSubTypes.Type(value = TravelToWorkClaimRequest.class, name = "TRAVEL_TO_WORK"),
+    @JsonSubTypes.Type(value = TravelInWorkClaimRequest.class, name = "TRAVEL_IN_WORK"),
     @JsonSubTypes.Type(value = SupportWorkerClaimRequest.class, name = "SUPPORT_WORKER"),
     @JsonSubTypes.Type(value = AdaptationToVehicleClaimRequest.class,
         name = "ADAPTATION_TO_VEHICLE")
@@ -71,6 +71,4 @@ public class ClaimRequest {
   @JsonProperty(value = "claimant")
   @NonNull
   private Claimant claimant;
-
-
 }

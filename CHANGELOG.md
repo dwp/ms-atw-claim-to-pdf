@@ -1,5 +1,11 @@
 # Changelog
 
+# 1.17.0 - (2024-04-18)
+* Updated fragments
+* Dependency suppression
+* Updated distroless version
+* Adding new journey Travel in Work functionality
+
 # 1.16.0 - (2024-02-13)
 * Updated dependency versions
 * Update fragments

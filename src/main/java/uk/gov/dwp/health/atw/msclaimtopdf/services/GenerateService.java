@@ -12,6 +12,7 @@ import uk.gov.dwp.health.atw.msclaimtopdf.forms.EquipmentOrAdaptationForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.NewOrAmendedContactDetailsForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.NewPayeeDetailsForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.SupportWorkerForm;
+import uk.gov.dwp.health.atw.msclaimtopdf.forms.TravelInWorkForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.forms.TravelToWorkForm;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.requests.ClaimRequest;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.requests.ContactInformationRequest;
@@ -53,6 +54,8 @@ public class GenerateService {
         return EquipmentOrAdaptationForm.generateForm(claimRequest);
       case ADAPTATION_TO_VEHICLE:
         return AdaptationToVehicleForm.generateForm(claimRequest);
+      case TRAVEL_IN_WORK:
+        return TravelInWorkForm.generateForm(claimRequest);
       default:
         throw new IllegalArgumentException(
             "Claim type not supported " + claimRequest.getClaimType());
