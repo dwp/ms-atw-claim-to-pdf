@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.18.0 - (2024-06-04)
+* Updated fragments
+* Removed SAAS references
+* Dependency suppression
+
 # 1.17.0 - (2024-04-18)
 * Updated fragments
 * Dependency suppression

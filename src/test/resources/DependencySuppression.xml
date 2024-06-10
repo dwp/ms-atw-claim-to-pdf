@@ -6,8 +6,8 @@
    ]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.springframework.*$</packageUrl>
         <cve>CVE-2016-1000027</cve>
-        <cve>CVE-2024-22243</cve>
         <cve>CVE-2024-22262</cve>
+        <cve>CVE-2024-22243</cve>
     </suppress>
     <suppress>
         <notes><![CDATA[
@@ -33,7 +33,15 @@
     </suppress>
     <suppress>
         <notes><![CDATA[
-   file name: bouncycastle* // this is temporary until bouncycastle releases a fix.
+   file name: logback* // this is temporary until logback releases a fix.
+   ]]></notes>
+        <packageUrl regex="true">^pkg:maven/ch\.qos.logback.*$</packageUrl>
+        <cve>CVE-2023-6378</cve>
+        <cve>CVE-2023-6481</cve>
+    </suppress>
+     <suppress>
+        <notes><![CDATA[
+   file name: bouncy castle* // this is temporary until bouncy castle releases a fix.
    ]]></notes>
         <packageUrl regex="true">^pkg:maven/org\.bouncycastle.*$</packageUrl>
         <cve>CVE-2023-33202</cve>
@@ -41,17 +49,9 @@
     </suppress>
     <suppress>
         <notes><![CDATA[
-   file name: logback* // this is temporary until logback releases a fix.
+   file name: ion-java-1.0.2.jar* // this is temporary until amazon releases a fix.
    ]]></notes>
-        <packageUrl regex="true">^pkg:maven/ch\.qos.logback.*$</packageUrl>
-        <cve>CVE-2023-6378</cve>
-        <cve>CVE-2023-6481</cve>
-    </suppress>
-    <suppress>
-        <notes><![CDATA[
-   file name: joda-time* // this is temporary until joda-time releases a fix.
-   ]]></notes>
-        <packageUrl regex="true">^pkg:maven/joda-time/joda-time.*$</packageUrl>
-        <cve>CVE-2024-23080</cve>
+        <packageUrl regex="true">^pkg:maven/software\.amazon.ion.*$</packageUrl>
+        <cve>CVE-2024-21634</cve>
     </suppress>
 </suppressions>
