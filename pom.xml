@@ -5,32 +5,51 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>uk.gov.dwp.health.atw</groupId>
     <artifactId>ms-claim-to-pdf</artifactId>
-    <version>1.18.0</version>
+    <version>1.19.0</version>
     <name>ms-claim-to-pdf</name>
     <description>Convert ms-claim json in to form layout and upload to S3</description>
     <properties>
-        <java.version>11</java.version>
-        <plugin.spotbugs.version>4.0.0</plugin.spotbugs.version>
-        <dwp.encoded-log.version>2.0.5</dwp.encoded-log.version>
-        <checkstyle.plugin.version>3.2.0</checkstyle.plugin.version>
-        <checkstyle.version>10.12.3</checkstyle.version>
-        <plugin.jacoco.version>0.8.8</plugin.jacoco.version>
-        <plugin.surefire.version>3.1.2</plugin.surefire.version>
-        <plugin.owasp.version>8.1.2</plugin.owasp.version>
-        <pitest.version>1.15.1</pitest.version>
-        <pitest-plugin.version>1.2.0</pitest-plugin.version>
-        <json.version>20231013</json.version>
-        <aws.version>1.12.674</aws.version>
-        <dwp.data-cryptography.version>2.8.0-e92423de</dwp.data-cryptography.version>
-        <snakeyaml.version>1.33</snakeyaml.version> <!-- Override default version used within Spring Boot (1.30) to fix CVE-2022-25857 -->
-        <tomcat.version>9.0.83</tomcat.version><!-- Override default version used within Spring Boot to fix CVE-2023-42794, CVE-2023-42795, CVE-2023-45648 -->
+        <java.version>17</java.version>
+        <plugin.spotbugs.plugin.version>4.7.3.5</plugin.spotbugs.plugin.version>
+        <plugin.spotbugs.version>4.7.3</plugin.spotbugs.version>
+        <dwp.encoded-log.version>3.0.0-dfda47f2</dwp.encoded-log.version>
+        <checkstyle.plugin.version>3.3.1</checkstyle.plugin.version>
+        <checkstyle.version>10.16.0</checkstyle.version>
+        <plugin.jacoco.version>0.8.10</plugin.jacoco.version>
+        <plugin.surefire.version>3.2.5</plugin.surefire.version>
+        <plugin.owasp.version>10.0.2</plugin.owasp.version>
+        <pitest.version>1.16.1</pitest.version>
+        <pitest-plugin.version>1.2.1</pitest-plugin.version>
+        <json.version>20240303</json.version>
+        <aws.version>1.12.725</aws.version>
+        <dwp.data-cryptography.version>3.0.0-fee8a798</dwp.data-cryptography.version>
+        <!--fixes CVE errors for repo-->
+        <jackson-databind.version>2.17.0</jackson-databind.version>
+        <bc-fips.version>1.0.2.5</bc-fips.version>
+        <annotations.version>3.0.1u2</annotations.version>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
         <dependency>
             <groupId>uk.gov.dwp.logging</groupId>
             <artifactId>encoded-logger-output</artifactId>
@@ -65,6 +84,12 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -82,7 +107,7 @@
         <dependency>
             <groupId>com.j2html</groupId>
             <artifactId>j2html</artifactId>
-            <version>1.5.0</version>
+            <version>1.6.0</version>
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
@@ -108,6 +133,17 @@
             <groupId>uk.gov.dwp.health.crypto</groupId>
             <artifactId>data-cryptography</artifactId>
             <version>${dwp.data-cryptography.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bc-fips</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bc-fips</artifactId>
+            <version>${bc-fips.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -127,7 +163,7 @@
             <dependency>
                 <groupId>org.bouncycastle</groupId>
                 <artifactId>bc-fips</artifactId>
-                <version>1.0.2.4</version>
+                <version>1.0.2.5</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -186,7 +222,10 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${plugin.spotbugs.version}</version>
+                <version>${plugin.spotbugs.plugin.version}</version>
+                <configuration>
+                    <excludeFilterFile>spotbugs/spotbugs-exclude.xml</excludeFilterFile>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>com.github.spotbugs</groupId>
