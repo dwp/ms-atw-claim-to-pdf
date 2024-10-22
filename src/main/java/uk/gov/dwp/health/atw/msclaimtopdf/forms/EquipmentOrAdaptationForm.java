@@ -23,7 +23,9 @@ import j2html.tags.specialized.DivTag;
 import j2html.tags.specialized.DlTag;
 import j2html.tags.specialized.HtmlTag;
 import java.text.DateFormatSymbols;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.Claimant;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.Date;
 import uk.gov.dwp.health.atw.msclaimtopdf.models.EquipmentOrAdaptation;
@@ -86,10 +88,15 @@ public class EquipmentOrAdaptationForm {
 
   private static DlTag getClaimInformation(
       EquipmentOrAdaptationClaimRequest equipOrAdaptClaimRequest) {
-    List<EquipmentOrAdaptation> equipmentOrAdaptations = equipOrAdaptClaimRequest.getClaim();
+
+    List<EquipmentOrAdaptation> equipmentOrAdaptation =
+        equipOrAdaptClaimRequest.getClaim().values().stream()
+            .flatMap(List::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
+
     DlTag dlTag = new DlTag();
 
-    dlTag.with(getEquipmentOrAdaptationsReceived(equipmentOrAdaptations),
+    dlTag.with(getEquipmentOrAdaptationsReceived(equipmentOrAdaptation),
         getTotalCost(equipOrAdaptClaimRequest.getCost(),
             "Total cost of specialist equipment"),
         getReceiptAttached(equipOrAdaptClaimRequest.getEvidence()));

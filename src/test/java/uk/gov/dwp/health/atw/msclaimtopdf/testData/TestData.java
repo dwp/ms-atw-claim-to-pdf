@@ -147,8 +147,6 @@ public class TestData {
           .dateOfPurchase(dateOfPurchase)
           .build();
 
-  public static List<EquipmentOrAdaptation> equipmentOrAdaptations =
-          singletonList(equipmentOrAdaptation);
 
   public static Date dateOfInvoice = Date.builder()
           .dd("12")

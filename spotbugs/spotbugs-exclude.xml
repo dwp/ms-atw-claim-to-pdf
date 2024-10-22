@@ -8,4 +8,8 @@
         <Class name="uk.gov.dwp.health.atw.msclaimtopdf.repositories.S3Repository"/>
         <Bug pattern="EI_EXPOSE_REP2"/>
     </Match>
+    <Match>
+        <Package name="~uk.gov.dwp.health.atw.msclaimtopdf.exceptions.*"/>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
 </FindBugsFilter>
