@@ -10,7 +10,7 @@
     </parent>
     <groupId>uk.gov.dwp.health.atw</groupId>
     <artifactId>ms-claim-to-pdf</artifactId>
-    <version>1.21.0</version>
+    <version>1.22.0</version>
     <name>ms-claim-to-pdf</name>
     <description>Convert ms-claim json in to form layout and upload to S3</description>
     <properties>

@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.22.0 - (2024-11-13)
+* Updated dependency suppressions
+
 # 1.21.0 - (2024-09-25)
 * Updated dependencies
 * Updated dependency suppressions
