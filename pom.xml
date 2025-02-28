@@ -5,36 +5,44 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+        <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>uk.gov.dwp.health.atw</groupId>
     <artifactId>ms-claim-to-pdf</artifactId>
-    <version>1.22.0</version>
+    <version>1.23.0</version>
     <name>ms-claim-to-pdf</name>
     <description>Convert ms-claim json in to form layout and upload to S3</description>
     <properties>
         <java.version>17</java.version>
-        <plugin.spotbugs.plugin.version>4.8.6.2</plugin.spotbugs.plugin.version>
+        <plugin.spotbugs.plugin.version>4.8.6.6</plugin.spotbugs.plugin.version>
         <plugin.spotbugs.version>4.8.6</plugin.spotbugs.version>
         <checkstyle.plugin.version>3.4.0</checkstyle.plugin.version>
         <checkstyle.version>10.16.0</checkstyle.version>
         <plugin.jacoco.version>0.8.12</plugin.jacoco.version>
-        <plugin.surefire.version>3.3.1</plugin.surefire.version>
-        <plugin.owasp.version>10.0.3</plugin.owasp.version>
-        <pitest.version>1.16.1</pitest.version>
+        <plugin.surefire.version>3.5.2</plugin.surefire.version>
+        <plugin.owasp.version>12.1.0</plugin.owasp.version>
+        <pitest.version>1.17.3</pitest.version>
         <pitest-plugin.version>1.2.1</pitest-plugin.version>
-        <json.version>20240303</json.version>
+        <json.version>20250107</json.version>
         <aws.version>1.12.725</aws.version>
         <dwp.encoded-log.version>3.0.0-dfda47f2</dwp.encoded-log.version>
-        <dwp.data-cryptography.version>3.0.0-fee8a798</dwp.data-cryptography.version>
-        <!--fixes CVE errors for repo-->
-        <jackson-databind.version>2.17.0</jackson-databind.version>
-        <bc-fips.version>1.0.2.5</bc-fips.version>
+        <dwp.data-cryptography.version>3.1.0-8859d262</dwp.data-cryptography.version>
+        <jackson-databind.version>2.18.2</jackson-databind.version>
         <annotations.version>3.0.1u2</annotations.version>
+        <maven-project-info-reports-plugin.version>3.5.0</maven-project-info-reports-plugin.version>
+        <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+        <!--fixes CVE errors for repo-->
+        <bc-fips.version>1.0.2.5</bc-fips.version>
+        <logback.version>1.5.15</logback.version> <!-- To fix CVE-2024-12798 and CVE-2024-12801 -->
+        <json-smart.version>2.5.2</json-smart.version> <!-- To fix CVE-2024-57699 -->
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>net.minidev</groupId>
+            <artifactId>json-smart</artifactId>
+            <version>${json-smart.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -303,14 +311,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.7.1</version>
+                <version>${maven-site-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven-project-info-reports-plugin.version}</version>
             </plugin>
-             <plugin>
+            <plugin>
                 <artifactId>dependency-check-maven</artifactId>
                 <configuration>
                     <cveValidForHours>12</cveValidForHours>
@@ -331,3 +339,4 @@
     </build>
 
 </project>
+

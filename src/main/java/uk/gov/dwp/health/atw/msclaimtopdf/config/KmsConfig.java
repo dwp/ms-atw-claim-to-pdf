@@ -4,7 +4,6 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import uk.gov.dwp.health.atw.msclaimtopdf.config.properties.CryptoConfigProperties;
@@ -31,7 +30,6 @@ public class KmsConfig {
   }
 
   @SneakyThrows
-  @Autowired
   @Bean
   public CryptoDataManager cryptoDataManager(final CryptoConfig cryptoConfig) {
     try {
