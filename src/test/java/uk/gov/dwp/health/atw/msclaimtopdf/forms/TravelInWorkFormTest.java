@@ -80,4 +80,12 @@ class TravelInWorkFormTest {
     assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/TravelInWorkWhoIsSelfEmployedWithNoClaimantEmailAddress.html"),
         htmlTag.render());
   }
+
+  @Test
+  void generateSuccessfulFormWithSupportWorkerWithExistingPayee() {
+    HtmlTag htmlTag = TravelInWorkForm.
+        generateForm(travelInWorkTestData.tiwWhoIsEmployedAndHasExistingPayeeClaimRequest);
+    assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/TravelInWorkWithExistingPayee.html"),
+        htmlTag.render());
+  }
 }

@@ -83,8 +83,14 @@ class FormUtilsTest {
 
     @Test
     void getPayeeDetails() {
-        DlTag dlTag = FormUtils.getPayeeDetailsNameAndEmail(TestData.payeeDetails);
-        assertEquals(FormUtilsTestData.validPayeeDetails(TestData.payeeDetails), dlTag.render());
+        DlTag dlTag = FormUtils.getPayeeDetailsNameAndEmail(TestData.payee);
+        assertEquals(FormUtilsTestData.validPayeeDetails(TestData.payee), dlTag.render());
+    }
+
+    @Test
+    void getPayeeDetailsForExistingPayee() {
+        DlTag dlTag = FormUtils.getPayeeDetailsNameAndEmail(TestData.existingPayee);
+        assertEquals(FormUtilsTestData.validPayeeDetails(TestData.existingPayee), dlTag.render());
     }
 
     @Test

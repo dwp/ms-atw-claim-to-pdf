@@ -59,7 +59,7 @@ public class TravelInWorkForm {
         h2("Claim information").withClass("govuk-heading-m"),
         getClaimInformation(travelInWorkClaimRequest),
         h2("Payee details").withClass("govuk-heading-m"),
-        getPayeeDetailsNameAndEmail(travelInWorkClaimRequest.getPayee().getDetails()),
+        getPayeeDetailsNameAndEmail(travelInWorkClaimRequest.getPayee()),
         h2("Employment details").withClass("govuk-heading-m"),
         getWorkplaceContactDetails(travelInWorkClaimRequest.getWorkplaceContact(),
             true,

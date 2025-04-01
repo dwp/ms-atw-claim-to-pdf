@@ -1,5 +1,18 @@
 # Changelog
 
+# 1.25.0 - (2025-03-25)
+* Updated dependencies
+* Updated dependency suppressions
+* Updated distroless version
+* Upgrade to Spring boot 3.4.4
+* Update Readme
+* Update data model so that account number can be included to the pdf for existing payees
+
+# 1.24.0 (2025-03-11)
+* chore: update ecr push jobs ([0bbfe9b](https://gitlab.com/dwp/health/atw/components/ms-claim-to-pdf/-/commit/0bbfe9b))
+* chore: update version ([7b39b26](https://gitlab.com/dwp/health/atw/components/ms-claim-to-pdf/-/commit/7b39b26))
+* [skip ci] ([a36a5ee](https://gitlab.com/dwp/health/atw/components/ms-claim-to-pdf/-/commit/a36a5ee))
+
 # 1.23.0 - (2025-02-25)
 * Resolved gitlab vulnerabilities
 * Fixed pipeline

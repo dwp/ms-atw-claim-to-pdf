@@ -168,6 +168,25 @@ public class SupportWorkerTestData {
           .claimant(claimant)
           .build();
 
+  public static SupportWorkerClaimRequest supportWorkerWhoIsEmployedAndHasExistingPayeeClaimRequest =
+      SupportWorkerClaimRequest.builder()
+          .id(validClaimNumber)
+          .claimType(ClaimType.SUPPORT_WORKER)
+          .cost(COST)
+          .evidence(evidences)
+          .payee(existingPayee)
+          .claimStatus(ClaimStatus.AWAITING_DRS_UPLOAD)
+          .nameOfSupport("Person 2")
+          .claim(singletonMap("0", supportWorkerClaimForOneMonth))
+          .declarationVersion(DECLARATION_VERSION)
+          .workplaceContact(employedWorkplaceContactResponse)
+          .createdDate(TestData.localDate)
+          .hasContributions(true)
+          .atwNumber(ACCESS_TO_WORK_NUMBER)
+          .claimant(claimant)
+          .build();
+
+
   public static SupportWorkerClaim supportWorkerClaimWithNameOfSupport = SupportWorkerClaim.builder()
       .dayOfSupport("4")
       .timeOfSupport(timeOfSupport3Hours25Mins)

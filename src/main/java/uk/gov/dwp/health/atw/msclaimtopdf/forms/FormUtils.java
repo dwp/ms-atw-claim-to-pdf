@@ -118,12 +118,16 @@ public class FormUtils {
     return divTagWithDtAndDdTags("Receipt attached", receiptAttached);
   }
 
-  static DlTag getPayeeDetailsNameAndEmail(PayeeDetails payeeDetails) {
+  static DlTag getPayeeDetailsNameAndEmail(Payee payee) {
     DlTag dlTag = new DlTag();
+    BankDetails bankDetails = payee.getBankDetails();
     dlTag.with(
-        divTagWithDtAndDdTags("Full name", payeeDetails.getFullName()),
-        divTagWithDtAndDdTags("Email address", payeeDetails.getEmailAddress())
+        divTagWithDtAndDdTags("Full name", payee.getDetails().getFullName()),
+        divTagWithDtAndDdTags("Email address", payee.getDetails().getEmailAddress())
     );
+    if (bankDetails != null) {
+      dlTag.with(divTagWithDtAndDdTags("Account number", bankDetails.getAccountNumber()));
+    }
 
     return dlTag.withClass("govuk-summary-list");
   }

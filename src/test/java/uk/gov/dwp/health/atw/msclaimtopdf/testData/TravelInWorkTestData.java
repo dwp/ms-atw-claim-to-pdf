@@ -10,6 +10,7 @@ import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.claimantWithN
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.employedWorkplaceContactResponse;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.employedWorkplaceContactWithMissingOptionalFields;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.evidences;
+import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.existingPayee;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.monthYearOfSupport;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.payee;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.validClaimNumber;
@@ -155,5 +156,23 @@ public class TravelInWorkTestData {
           .hasContributions(true)
           .atwNumber(ACCESS_TO_WORK_NUMBER)
           .claimant(claimantWithNoEmailAddress)
+          .build();
+
+  public TravelInWorkClaimRequest tiwWhoIsEmployedAndHasExistingPayeeClaimRequest =
+      TravelInWorkClaimRequest.builder()
+          .id(validClaimNumber)
+          .claimType(ClaimType.TRAVEL_IN_WORK)
+          .cost(COST)
+          .evidence(evidences)
+          .payee(existingPayee)
+          .claimStatus(ClaimStatus.AWAITING_DRS_UPLOAD)
+          .totalMileage(10)
+          .claim(singletonMap("0", travelInWorkClaimForOneMonth))
+          .declarationVersion(DECLARATION_VERSION)
+          .workplaceContact(employedWorkplaceContactResponse)
+          .createdDate(TestData.localDate)
+          .hasContributions(true)
+          .atwNumber(ACCESS_TO_WORK_NUMBER)
+          .claimant(claimant)
           .build();
 }

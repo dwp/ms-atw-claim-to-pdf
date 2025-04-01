@@ -67,4 +67,13 @@ class SupportWorkerFormTest {
                 RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerWithNameOfSupportOnSupportWorkerClaim.html"),
             htmlTag.render());
     }
+
+    @Test
+    void generateSuccessfulFormWithSupportWorkerWithExistingPayee() {
+        HtmlTag htmlTag = SupportWorkerForm.
+            generateForm(SupportWorkerTestData.supportWorkerWhoIsEmployedAndHasExistingPayeeClaimRequest);
+        assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerWithExistingPayee.html"),
+            htmlTag.render());
+    }
+
 }

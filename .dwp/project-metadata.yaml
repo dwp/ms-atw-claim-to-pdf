@@ -6,11 +6,11 @@ project:
   - project_id: 33159098
     component_name: ms-claim-to-pdf
 
-    version: 1.23.0
+    version: 1.25.0
 
     last_verified:
-      date: "2025-02-25"
-      name: "@ruta.radiya1"
+      date: "2025-03-25"
+      name: "@louise.oliver1"
 
     tags:
       payments: false

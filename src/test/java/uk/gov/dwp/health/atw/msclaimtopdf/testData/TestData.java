@@ -18,7 +18,7 @@ public class TestData {
   public static final String ACCESS_TO_WORK_NUMBER = "ATW12006521";
 
   public static long validClaimNumber = 1;
-  public static final  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+  public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
 
   public static final String localDateFormatted
       = (LocalDate.of(2022, Month.JANUARY, 30)).format(formatter);
@@ -66,10 +66,10 @@ public class TestData {
       .build();
 
   public static Address addressWithoutLineTwoAndFour = Address.builder()
-          .address1("THE COTTAGE 1")
-          .address3("WHITLEY BAY")
-          .postcode("NE26 4RS")
-          .build();
+      .address1("THE COTTAGE 1")
+      .address3("WHITLEY BAY")
+      .postcode("NE26 4RS")
+      .build();
 
   public static BankDetails bankDetails = BankDetails.builder()
       .accountHolderName("Citizen One")
@@ -78,16 +78,24 @@ public class TestData {
       .build();
 
   public static Payee payee = Payee.builder()
+      .newPayee(true)
       .details(payeeDetails)
       .address(address)
       .bankDetails(bankDetails)
       .build();
 
   public static Payee payeeWithMissingOptionalFields = Payee.builder()
-          .details(payeeDetails)
-          .address(addressWithoutLineTwoAndFour)
-          .bankDetails(bankDetails)
-          .build();
+      .newPayee(true)
+      .details(payeeDetails)
+      .address(addressWithoutLineTwoAndFour)
+      .bankDetails(bankDetails)
+      .build();
+
+  public static Payee existingPayee = Payee.builder()
+      .newPayee(false)
+      .details(payeeDetails)
+      .bankDetails(bankDetails)
+      .build();
 
   public static MonthYear monthYearOfSupport = MonthYear.builder()
       .mm("09")
@@ -117,14 +125,14 @@ public class TestData {
       .build();
 
   public static WorkplaceContact noEmploymentStatusWorkplaceContactResponse = WorkplaceContact.builder()
-      .fullName("counter Signer")
-      .emailAddress("email@company.com")
-      .organisation("Organisation")
-      .jobTitle("boss2")
-      .address(addressWithEscapeCharacter)
-      .updatedOn(localDate.plusDays(1))
-      .declarationVersion(DECLARATION_VERSION)
-      .build();
+          .fullName("counter Signer")
+          .emailAddress("email@company.com")
+          .organisation("Organisation")
+          .jobTitle("boss2")
+          .address(addressWithEscapeCharacter)
+          .updatedOn(localDate.plusDays(1))
+          .declarationVersion(DECLARATION_VERSION)
+          .build();
 
   public static WorkplaceContact employedWorkplaceContactWithMissingOptionalFields = WorkplaceContact.builder()
           .employmentStatus("Employed")
@@ -137,22 +145,22 @@ public class TestData {
           .build();
 
   public static Date dateOfPurchase = Date.builder()
-          .dd("29")
-          .mm("09")
-          .yyyy("2021")
-          .build();
+      .dd("29")
+      .mm("09")
+      .yyyy("2021")
+      .build();
 
   public static EquipmentOrAdaptation equipmentOrAdaptation = EquipmentOrAdaptation.builder()
-          .description("Item 1")
-          .dateOfPurchase(dateOfPurchase)
-          .build();
+      .description("Item 1")
+      .dateOfPurchase(dateOfPurchase)
+      .build();
 
 
   public static Date dateOfInvoice = Date.builder()
-          .dd("12")
-          .mm("04")
-          .yyyy("2003")
-          .build();
+      .dd("12")
+      .mm("04")
+      .yyyy("2003")
+      .build();
 
   public static AdaptationToVehicleClaim adaptationToVehicle = AdaptationToVehicleClaim.builder()
       .description("Item 1")
@@ -164,23 +172,23 @@ public class TestData {
       .build();
 
   public static Claimant claimant = Claimant.builder()
-          .company("Apple Inc")
-          .emailAddress("test@appletest.com")
-          .forename("Abel")
-          .surname("Sample")
-          .homeNumber("01233445566")
-          .mobileNumber("0767677615")
-          .dateOfBirth(LocalDate.of(1980, 10, 10))
-          .address(newAddress)
-          .build();
+      .company("Apple Inc")
+      .emailAddress("test@appletest.com")
+      .forename("Abel")
+      .surname("Sample")
+      .homeNumber("01233445566")
+      .mobileNumber("0767677615")
+      .dateOfBirth(LocalDate.of(1980, 10, 10))
+      .address(newAddress)
+      .build();
 
   public static Claimant claimantWithNoEmailAddress = Claimant.builder()
-          .company("Apple Inc")
-          .forename("Abel")
-          .surname("Sample")
-          .homeNumber("01233445566")
-          .mobileNumber("0767677615")
-          .dateOfBirth(LocalDate.of(1980, 10, 10))
-          .address(newAddress)
-          .build();
+      .company("Apple Inc")
+      .forename("Abel")
+      .surname("Sample")
+      .homeNumber("01233445566")
+      .mobileNumber("0767677615")
+      .dateOfBirth(LocalDate.of(1980, 10, 10))
+      .address(newAddress)
+      .build();
 }

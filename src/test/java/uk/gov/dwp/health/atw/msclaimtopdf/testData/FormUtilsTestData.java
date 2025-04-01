@@ -81,15 +81,19 @@ public class FormUtilsTestData {
                "</div>";
     }
 
-    public static String validPayeeDetails(PayeeDetails payeeDetails) {
+    public static String validPayeeDetails(Payee payee) {
         return "<dl class=\"govuk-summary-list\">" +
                 "<div class=\"govuk-summary-list__row\">" +
                 "<dt class=\"govuk-summary-list__key\">Full name</dt>" +
-                "<dd class=\"govuk-summary-list__value\">"+payeeDetails.getFullName()+"</dd>" +
+                "<dd class=\"govuk-summary-list__value\">"+payee.getDetails().getFullName()+"</dd>" +
                 "</div>" +
                 "<div class=\"govuk-summary-list__row\">" +
                 "<dt class=\"govuk-summary-list__key\">Email address</dt>" +
-                "<dd class=\"govuk-summary-list__value\">"+payeeDetails.getEmailAddress()+"</dd>" +
+                "<dd class=\"govuk-summary-list__value\">"+payee.getDetails().getEmailAddress()+"</dd>" +
+                "</div>" +
+                "<div class=\"govuk-summary-list__row\">" +
+                "<dt class=\"govuk-summary-list__key\">Account number</dt>" +
+                "<dd class=\"govuk-summary-list__value\">"+payee.getBankDetails().getAccountNumber()+"</dd>" +
                 "</div>" +
                 "</dl>";
     }

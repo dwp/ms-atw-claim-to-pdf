@@ -10,8 +10,8 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "id": 49,
     "createdDate": "2022-01-30T13:31:05.775",
     "lastModifiedDate": "2022-01-31T14:27:32.02",
-    "claimStatus": "COUNTER_SIGN_APPROVED",
-    "nino": "AA370773A",
+    "claimStatus": "AWAITING_DRS_UPLOAD",
+    "nino": "RN000013A",
     "claimType": "SUPPORT_WORKER",
     "cost": 2000.0,
     "hasContributions": true,
@@ -25,9 +25,9 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
       "company": "Apple Inc",
       "address": {
         "address1": "1 The Street",
-        "address2": "Village Name",
+        "address2": "Village Name", // Optional
         "address3": "Town",
-        "address4": "County",
+        "address4": "County", // Optional
         "postcode": "NE26 4RS"
       }
     },   
@@ -41,23 +41,23 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
             "fileName": "Technical Architect.docx"
         }
     ],
-    "payee": {
+    "payee": { 
         "newPayee": true, 
         "details": {
             "fullName": "INeed Paying",
             "emailAddress": "payment@now.com"// Optional if newPayee is set to false
         },
-        "address": {
+        "address": { // if newPayee is set to false, address is not required
             "address1": "THE COTTAGE",
-            "address2": "ST. MARYS ISLAND",
+            "address2": "ST. MARYS ISLAND", // Optional
             "address3": "WHITLEY BAY",
-            "address4": null,
+            "address4": null, // Optional
             "postcode": "NE26 4RS"
         },
-        "bankDetails": {
+        "bankDetails": {// if newPayee is set to false, bankDetails accountNumber is the only one required
             "accountHolderName": "Ineed Paying",
             "sortCode": "000004",
-            "accountNumber": "12345677",
+            "accountNumber": "12345677", // required
             "rollNumber": null
         }
     },
@@ -83,7 +83,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
                         "hoursOfSupport": 3,
                         "minutesOfSupport": 0
                     }
-                },
+                }
             ]
         },
         "1": {
@@ -118,7 +118,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "declarationVersion": 3.1,
         "address": {
             "address1": "THE COTTAGE 3",
-            "address2": "ST. MARYS ISLAND",
+            "address2": "ST. MARYS ISLAND", // Optional
             "address3": "WHITLEY BAY",
             "postcode": "NE26 4RS"
         }
@@ -142,13 +142,13 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "id": 6,
     "createdDate": "2022-02-17T15:35:14.432",
     "lastModifiedDate": "2022-02-17T15:35:14.432",
-    "claimStatus": "AWAITING_AGENT_APPROVAL",
-    "nino": "AA370773A",
+    "claimStatus": "AWAITING_DRS_UPLOAD",
+    "nino": "RN000013A",
     "claimType": "EQUIPMENT_OR_ADAPTATION",
     "cost": 2211.0,
     "hasContributions": true,
-    "atwNumber" : "ATW1234567",
-      "claimant": {
+    "atwNumber": "ATW1234567",
+    "claimant": {
         "forename": "Odin",
         "surname": "Surtsson",
         "dateOfBirth": "1930-11-12",
@@ -157,31 +157,31 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "company": "Apple Inc",
         "address": {
           "address1": "1 The Street",
-          "address2": "Village Name",
+          "address2": "Village Name", // Optional
           "address3": "Town",
-          "address4": "County",
+          "address4": "County", // Optional
           "postcode": "NE26 4RS"
         }
       },
-   "payee": {
-        "newPayee": true, //for EA newPayee must be true
-        "details": {
-            "fullName": "INeed Paying",
-            "emailAddress": "payment@now.com"
-        },
-        "address": {
-            "address1": "THE COTTAGE",
-            "address2": "ST. MARYS ISLAND",
-            "address3": "WHITLEY BAY",
-            "address4": "WHITLEY BAY",
-            "postcode": "NE26 4RS"
-        },
-        "bankDetails": {
-            "accountHolderName": "Ineed Paying",
-            "sortCode": "000004",
-            "accountNumber": "12345677",
-            "rollNumber": "12345677"
-        }
+    "payee": {
+       "newPayee": true, //for EA newPayee must be true
+       "details": {
+          "fullName": "INeed Paying",
+          "emailAddress": "payment@now.com"
+       },
+       "address": {
+          "address1": "THE COTTAGE",
+          "address2": "ST. MARYS ISLAND", // Optional
+          "address3": "WHITLEY BAY",
+          "address4": "WHITLEY BAY", // Optional
+          "postcode": "NE26 4RS"
+       },
+       "bankDetails": {
+          "accountHolderName": "Ineed Paying",
+          "sortCode": "000004",
+          "accountNumber": "12345677",  //required
+          "rollNumber": "12345677" //optional
+       }
     },
     "declarationVersion": 2.1,
     "evidence": [
@@ -190,24 +190,28 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
             "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
         }
     ],
-    "claim": [
-        {
-            "description": "Item 1",
-            "dateOfPurchase": {
-                "dd": "22",
-                "mm": "11",
-                "yyyy": "2020"
-            }
-        },
-        {
+    "claim": {
+        "0": [
+          {
             "description": "Item 2",
             "dateOfPurchase": {
-                "dd": "18",
-                "mm": "12",
-                "yyyy": "2020"
+              "dd": "22",
+              "mm": "11",
+              "yyyy": "2020"
             }
-        }
-    ]
+          }
+        ],
+        "1": [
+          {
+            "description": "Item 2",
+            "dateOfPurchase": {
+              "dd": "18",
+              "mm": "12",
+              "yyyy": "2020"
+            }
+          }
+        ]
+    }
 }
 ```
 
@@ -229,24 +233,25 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "id": 6,
     "createdDate": "2022-02-17T15:35:14.432",
     "lastModifiedDate": "2022-02-17T15:35:14.432",
-    "claimStatus": "AWAITING_AGENT_APPROVAL",
-    "nino": "AA370773A",
+    "claimStatus": "AWAITING_DRS_UPLOAD",
+    "nino": "RN000013A",
     "claimType": "ADAPTATION_TO_VEHICLE",
     "cost": 2211.0,
     "hasContributions": true,
-    "atwNumber" : "ATW1234567",
+    "atwNumber": "ATW1234567",
       "claimant": {
         "forename": "Odin",
         "surname": "Surtsson",
         "dateOfBirth": "1930-11-12",
         "emailAddress": "Odin.Surtsson@gmail.com", //optional
         "homeNumber": "07700900630", //optional
+        "mobileNumber": "01000000000", //optional
         "company": "Apple Inc",
         "address": {
-          "address1": "1 The Street",
-          "address2": "Village Name",
-          "address3": "Town",
-          "address4": "County",
+          "address1": "THE COTTAGE",
+          "address2": "ST. MARYS ISLAND", // Optional
+          "address3": "WHITLEY BAY",
+          "address4": "WHITLEY BAY", // Optional
           "postcode": "NE26 4RS"
         }
       },
@@ -258,16 +263,16 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         },
         "address": {
             "address1": "THE COTTAGE",
-            "address2": "ST. MARYS ISLAND",
+            "address2": "ST. MARYS ISLAND", // Optional
             "address3": "WHITLEY BAY",
-            "address4": "WHITLEY BAY",
+            "address4": "WHITLEY BAY", // Optional
             "postcode": "NE26 4RS"
         },
         "bankDetails": {
             "accountHolderName": "Ineed Paying",
             "sortCode": "000004",
             "accountNumber": "12345677",
-            "rollNumber": "12345677"
+            "rollNumber": "12345677" //optional
         }
     },
     "declarationVersion": 2.1,
@@ -276,25 +281,33 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
             "fileId": "633ce73b-1414-433e-8a08-72449a0244fc/144b2aca-996d-4c27-bdf2-1e9b418874d3",
             "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
         }
-    ],
-    "claim": [
-        {
-            "description": "Item 1",
-            "dateOfInvoice": {
+      ],
+      "claim": {
+        "0": {
+          "claimDescription": [
+            {
+              "description": "Item 1",
+              "dateOfInvoice": {
                 "dd": "22",
                 "mm": "11",
                 "yyyy": "2020"
+              }
             }
+          ]
         },
-        {
-            "description": "Item 2",
-            "dateOfInvoice": {
-                "dd": "18",
-                "mm": "12",
+        "1": {
+          "claimDescription": [
+            {
+              "description": "Item 2",
+              "dateOfInvoice": {
+                "dd": "2",
+                "mm": "11",
                 "yyyy": "2020"
+              }
             }
+          ]
         }
-    ]
+      }
 }
 ```
 
@@ -315,102 +328,99 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "id": 9,
     "createdDate": "2022-02-18T17:55:24.669",
     "lastModifiedDate": "2022-02-19T17:55:50.841",
-    "claimStatus": "COUNTER_SIGN_APPROVED",
-    "nino": "AA370773A",
+    "claimStatus": "AWAITING_DRS_UPLOAD",
+    "nino": "RN000013A",
     "claimType": "TRAVEL_TO_WORK",
-    "cost": 2211.0,  // If TW and howDidYouTravelForWork == lift then it will not be presented
+    "travelDetails": {
+       "howDidYouTravelForWork": "lift", // Values: lift or taxi
+      "journeysOrMileage": "mileage"// Optional. Will only be show if above is lift. Values: mileage or Journeys
+    },
+    "cost": 121, // If TW and howDidYouTravelForWork == lift then it will not be presented
     "hasContributions": true,
-    "atwNumber" : "ATW1234567",
+    "atwNumber": "ATW1234567",
     "claimant": {
         "forename": "Odin",
         "surname": "Surtsson",
-        "dateOfBirth": "1930-11-12",
+        "dateOfBirth": "1930-11-22",
         "emailAddress": "Odin.Surtsson@gmail.com", //optional
-        "homeNumber": "07700900630", //optional
-        "company": "Apple Inc",
+        "homeNumber": "01277777777", //optional
+        "mobileNumber": "07700900630", //optional
+        "company": "Company 1",
         "address": {
           "address1": "1 The Street",
-          "address2": "Village Name",
+          "address2": "Village Name", // Optional
           "address3": "Town",
-          "address4": "County",
+          "address4": "County", // Optional
           "postcode": "NE26 4RS"
         }
+    },
+    "payee": { 
+      "newPayee": true,
+      "details": { // details must always be present
+        "fullName": "INeed Paying",
+        "emailAddress": "payment@now.com"// Optional if newPayee is set to false
       },
-  "payee": { // Same as SW and EA
-    "newPayee": true,
-    "details": {
-            "fullName": "Ineed Paying",
-            "emailAddress": "payment@now.com"// Optional if newPayee is set to false
-        },
-        "address": {
-            "address1": "THE COTTAGE",
-            "address2": "ST. MARYS ISLAND",
-            "address3": "WHITLEY BAY",
-            "address4": "WHITLEY BAY",
-            "postcode": "NE26 4RS"
-        },
-        "bankDetails": {
-            "accountHolderName": "Ineed Paying",
-            "sortCode": "000004",
-            "accountNumber": "12345677",
-            "rollNumber": "12345677"
-        }
+      "address": {// if newPayee is set to false, address is not required
+         "address1": "THE COTTAGE",
+         "address2": "ST. MARYS ISLAND", // Optional
+         "address3": "WHITLEY BAY",
+         "address4": "WHITLEY BAY", // Optional
+         "postcode": "NE26 4RS"
+      },
+      "bankDetails": {// if newPayee is set to false, bankDetails accountNumber is the only one required
+         "accountHolderName": "Ineed Paying",
+         "sortCode": "000004",
+         "accountNumber": "12345677", //required
+         "rollNumber": "12345677" // optional
+      }
     },
     "declarationVersion": 2.1,
     "workplaceContact": {
-        "emailAddress": "Count@sign.com",
-        "fullName": "Count Signer",
-        "organisation": "company2",
-        "jobTitle": "boss2",
-        "address": {
-            "address1": "THE COTTAGE",
-            "address2": "ST. MARYS ISLAND",
-            "address3": "WHITLEY BAY",
-            "address4": "WHITLEY BAY",
-            "postcode": "NE26 4RS"
-        },
-        "updatedOn": "2022-02-19T17:55:50.841",
-        "employmentStatus": "employed",
-        "declarationVersion": 3.1
+      "emailAddress": "Count@sign.com",
+      "fullName": "Count Signer",
+      "organisation": "company2",
+      "jobTitle": "boss2",
+      "address": {
+        "address1": "THE COTTAGE",
+        "address2": "ST. MARYS ISLAND",
+        "address3": "WHITLEY BAY",
+        "address4": "WHITLEY BAY",
+        "postcode": "NE26 4RS"
+      },
+      "updatedOn": "2022-02-19T17:55:50.841",
+      "employmentStatus": "employed",
+      "declarationVersion": 3.1
     },
-    "evidence": [ // Same as SW and EA
+    "evidence": [
         {
-            "fileId": "633ce73b-1414-433e-8a08-72449a0244fc/144b2aca-996d-4c27-bdf2-1e9b418874d3",
-            "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
+          "fileId": "583d32fb-4b1d-418b-a25b-d1a47feb095f/4a5d1bdf-7b60-402d-93bf-de3e7a369044",
+          "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
         }
     ],
-    "travelDetails": {
-        "howDidYouTravelForWork": "Taxi", // Values: lift or taxi
-        "journeysOrMileage": null // Optional. Will only be show if above is lift. Values: mileage or Journeys
-    },
     "claim": {
         "0": {
-            "monthYear": {
-                "mm": "04",
-                "yyyy": "2020"
-            },
-            "claim": [
-                {
-                "dayOfTravel": "8",
-                "totalTravel": "6"// Both fields are required. No optional fields as this is a TW specific field
-                }
-            ]   
+          "monthYear": {
+            "mm": "04",
+            "yyyy": "2020"
+          },
+          "claim": [
+            {
+              "dayOfTravel": "12",
+              "totalTravel": "13" // Both fields are required. No optional fields as this is a TW specific field
+            }
+          ]
         },
         "1": {
-            "monthYear": {
-                "mm": "05",
-                "yyyy": "2020"
-            },
-            "claim": [
-                {
-                    "dayOfTravel": "12",
-                    "totalTravel": "12"
-                },
-                {
-                    "dayOfTravel": "13",
-                    "totalTravel": "13"
-                }
-            ]
+          "monthYear": {
+            "mm": "05",
+            "yyyy": "2020"
+          },
+          "claim": [
+            {
+              "dayOfTravel": "12",
+              "totalTravel": "13"
+            }
+          ]
         }
     }
 }
@@ -433,54 +443,46 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
   "id": 9,
   "createdDate": "2024-02-27T11:03:11.594",
   "lastModifiedDate": "2024-02-27T13:46:00.123",
-  "claimStatus": "COUNTER_SIGN_APPROVED",
-  "nino": "CS700100A",
-  "atwNumber": "ATW1234567",
+  "claimStatus": "AWAITING_DRS_UPLOAD",
+  "nino": "RN000013A",
   "claimType": "TRAVEL_IN_WORK",
   "cost": 2211.0,
   "hasContributions": true,
+  "atwNumber": "ATW1234567",
   "claimant": {
     "forename": "Odin",
     "surname": "Surtsson",
-    "dateOfBirth": "1930-11-22",
+    "dateOfBirth": "1930-11-12",
     "emailAddress": "Odin.Surtsson@gmail.com",  //optional
     "homeNumber": "01233665544",  //optional
-    "mobileNumber": "07700900630",
+    "mobileNumber": "07700900630", //optional
+    "company": "Company 1",
     "address": {
       "address1": "1 The Street",
-      "address2": "Village Name",
+      "address2": "Village Name", // Optional
       "address3": "Town",
-      "address4": "County",
+      "address4": "County", // Optional
       "postcode": "NE26 4RS"
-    },
-    "company": "Company 1"
+    }
   },
-  "payee": { // Same as SW, TW, AV and EA
+  "payee": { 
+    "newPayee": true,
     "details": {
       "fullName": "INeed Paying",
       "emailAddress": "name@name.com"// Optional if newPayee is set to false
     },
-    "address": {
+    "address": {// if newPayee is set to false, address is not required
       "address1": "THE COTTAGE",
-      "address2": "ST. MARYS ISLAND",
+      "address2": "ST. MARYS ISLAND",  //optional
       "address3": "WHITLEY BAY",
-      "address4": "WHITLEY BAY",
+      "address4": "WHITLEY BAY", //optional
       "postcode": "NE26 4RS"
     },
-    "bankDetails": {
+    "bankDetails": { // if newPayee is set to false, bankDetails accountNumber is the only one required
       "accountHolderName": "INeed Paying",
       "sortCode": "000004",
-      "accountNumber": "12345677",
-      "rollNumber": "12345677"
-    },
-    "newPayee": true
-  },
-  "declarationVersion": 2.1,
-  "journeyContext": {
-    "data": {
-      "equipment-cost": {
-        "cost": 123.2
-      }
+      "accountNumber": "12345677", // required
+      "rollNumber": "12345677" //optional
     }
   },
   "previousClaimId": 3,
@@ -492,22 +494,23 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "jobTitle": "boss2",
     "address": {
       "address1": "b q bridl",
-      "address2": "ST. MARYS ISLAND",
+      "address2": "ST. MARYS ISLAND", // Optional
       "address3": "WHITLEY BAY",
-      "address4": "WHITLEY BAY",
+      "address4": "WHITLEY BAY", // Optional
       "postcode": "NE26 4RS"
     },
     "updatedOn": "2024-02-27T13:46:00.116",
     "employmentStatus": "employed",
     "declarationVersion": 3.0
   },
-  "evidence": [ // Same as SW, TW, AV and EA
+  "evidence": [
     {
       "fileId": "633ce73b-1414-433e-8a08-72449a0244fc/144b2aca-996d-4c27-bdf2-1e9b418874d3",
       "fileName": "6b99f480c27e246fa5dd0453cd4fba29.pdf"
     }
   ],
   "totalMileage": 2,
+  "declarationVersion": 2.1,
   "claim": {
     "0": {
       "monthYear": {
@@ -577,7 +580,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
 
 ```json5
 {
-    "contactInformationStatus": "AWAITING_UPLOAD",
+    "contactInformationStatus": "AWAITING_DRS_UPLOAD",
     "createdDate": "2022-02-28T15:01:32.357",
     "accessToWorkNumber": "ATW12006521",
     "declarationVersion": 2.3,
@@ -589,9 +592,9 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "homeNumber": "07627847834", //optional
         "address": {
             "address1": "THE COTTAGE",
-            "address2": "ST. MARYS ISLAND",
+            "address2": "ST. MARYS ISLAND", // Optional
             "address3": "WHITLEY BAY",
-            "address4": null,
+            "address4": null, // Optional
             "postcode": "NE26 4RS"
         }
     },
@@ -603,9 +606,9 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
         "homeNumber": "07627847834", //optional
         "address": {
             "address1": "15 Redburry Grove",
-            "address2": "Bramhope",
+            "address2": "Bramhope", // Optional
             "address3": "Leeds",
-            "address4": "West Yorkshire",
+            "address4": "West Yorkshire", // Optional
             "postcode": "LS6 7RU"
         }
     }
@@ -626,7 +629,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
 
 ```json5
 {
-  "contactInformationStatus": "AWAITING_UPLOAD",
+  "contactInformationStatus": "/generate/update-contact-details",
   "createdDate": "2022-02-28T15:01:32.357",
   "accessToWorkNumber": "ATW12006521",
   "declarationVersion": 2.3,
@@ -637,9 +640,9 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     "homeNumber": "07627847834", //optional
     "address": {
       "address1": "THE COTTAGE",
-      "address2": "ST. MARYS ISLAND",
+      "address2": "ST. MARYS ISLAND", // Optional
       "address3": "WHITLEY BAY",
-      "address4": null,
+      "address4": null, // Optional
       "postcode": "NE26 4RS"
     }
   },
@@ -650,7 +653,7 @@ A Java Springboot service within Access to Work (AtW) that will take in json, co
     },
     "address": {
       "address1": "THE COTTAGE",
-      "address2": "ST. MARYS ISLAND",
+      "address2": "ST. MARYS ISLAND", // Optional
       "address3": "WHITLEY BAY",
       "postcode": "NE26 4RS"
     },

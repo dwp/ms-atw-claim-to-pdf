@@ -112,4 +112,12 @@ class TravelToWorkFormTest {
     assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/TravelToWorkWithTaxiWhoIsSelfEmployedOneJourney.html"),
         htmlTag.render());
   }
+
+  @Test
+  void generateSuccessfulFormWithTravelToWorkWithExistingPayee() {
+    HtmlTag htmlTag = TravelToWorkForm.
+        generateForm(travelToWorkTestData.taxiTravelTypeWhoIsEmployedTWWithExistingPayeeClaimRequest);
+    assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/TravelToWorkWithExistingPayee.html"),
+        htmlTag.render());
+  }
 }

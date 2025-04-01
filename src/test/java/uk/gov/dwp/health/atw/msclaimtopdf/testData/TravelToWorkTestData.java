@@ -10,6 +10,7 @@ import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.claimantWithN
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.employedWorkplaceContactResponse;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.employedWorkplaceContactWithMissingOptionalFields;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.evidences;
+import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.existingPayee;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.monthYearOfSupport;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.payee;
 import static uk.gov.dwp.health.atw.msclaimtopdf.testData.TestData.validClaimNumber;
@@ -231,6 +232,24 @@ public class TravelToWorkTestData {
           .claim(singletonMap("0", travelToWorkClaimForOneMonth))
           .declarationVersion(DECLARATION_VERSION)
           .workplaceContact(selfEmployedWorkplaceContact)
+          .createdDate(TestData.localDate)
+          .hasContributions(true)
+          .atwNumber(ACCESS_TO_WORK_NUMBER)
+          .claimant(claimant)
+          .build();
+
+  public TravelToWorkClaimRequest taxiTravelTypeWhoIsEmployedTWWithExistingPayeeClaimRequest =
+      TravelToWorkClaimRequest.builder()
+          .id(validClaimNumber)
+          .claimType(ClaimType.TRAVEL_TO_WORK)
+          .cost(COST)
+          .evidence(evidences)
+          .payee(existingPayee)
+          .claimStatus(ClaimStatus.AWAITING_COUNTER_SIGN)
+          .travelDetails(travelDetailsForTaxi)
+          .claim(singletonMap("0", travelToWorkClaimForOneMonth))
+          .declarationVersion(DECLARATION_VERSION)
+          .workplaceContact(employedWorkplaceContactResponse)
           .createdDate(TestData.localDate)
           .hasContributions(true)
           .atwNumber(ACCESS_TO_WORK_NUMBER)

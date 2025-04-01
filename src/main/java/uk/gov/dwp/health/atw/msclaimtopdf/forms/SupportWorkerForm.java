@@ -61,7 +61,7 @@ public class SupportWorkerForm {
         h2("Claim information").withClass("govuk-heading-m"),
         getClaimInformation(supportWorkerClaimRequest),
         h2("Payee details").withClass("govuk-heading-m"),
-        getPayeeDetailsNameAndEmail(supportWorkerClaimRequest.getPayee().getDetails()),
+        getPayeeDetailsNameAndEmail(supportWorkerClaimRequest.getPayee()),
         h2("Details of the person or company who can confirm the support costs")
             .withClass("govuk-heading-m"),
         getWorkplaceContactDetails(supportWorkerClaimRequest.getWorkplaceContact(), false, true),
