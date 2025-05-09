@@ -120,4 +120,12 @@ class TravelToWorkFormTest {
     assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/TravelToWorkWithExistingPayee.html"),
         htmlTag.render());
   }
+
+  @Test
+  void generateSuccessfulFormWithTravelToWorkWithExistingPayeeOldDataModel() {
+    HtmlTag htmlTag = TravelToWorkForm.
+        generateForm(travelToWorkTestData.taxiTravelTypeWhoIsEmployedTWWithExistingPayeeClaimRequestOldDataModel);
+    assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/TravelToWorkWithExistingPayeeOldDataModel.html"),
+        htmlTag.render());
+  }
 }

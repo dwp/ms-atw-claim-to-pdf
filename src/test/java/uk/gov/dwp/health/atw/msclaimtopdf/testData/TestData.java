@@ -97,6 +97,11 @@ public class TestData {
       .bankDetails(bankDetails)
       .build();
 
+  public static Payee existingPayeeOldDataModel = Payee.builder()
+      .newPayee(false)
+      .details(payeeDetails)
+      .build();
+
   public static MonthYear monthYearOfSupport = MonthYear.builder()
       .mm("09")
       .yyyy("2021")

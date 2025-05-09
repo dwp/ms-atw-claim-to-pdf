@@ -76,4 +76,12 @@ class SupportWorkerFormTest {
             htmlTag.render());
     }
 
+    @Test
+    void generateSuccessfulFormWithSupportWorkerWithExistingPayeeOldDataModel() {
+        HtmlTag htmlTag = SupportWorkerForm.
+            generateForm(SupportWorkerTestData.supportWorkerWhoIsEmployedAndHasExistingPayeeClaimRequestOldDataModel);
+        assertEquals(TestUtils.getFileAsString(RESPONSE_HTML_FILES_LOCATION + "/SupportWorkerWithExistingPayeeOldDataModel.html"),
+            htmlTag.render());
+    }
+
 }

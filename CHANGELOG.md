@@ -1,5 +1,10 @@
 # Changelog
 
+# 1.26.0 - (2025-04-30)
+* Updated dependencies
+* Updated distroless version
+* Adding unit tests for existing payees data model
+
 # 1.25.0 - (2025-03-25)
 * Updated dependencies
 * Updated dependency suppressions
