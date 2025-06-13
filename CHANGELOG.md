@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.27.0 - (2025-06-9)
+* Adopt pipeline execution policy changes
+
 # 1.26.0 - (2025-04-30)
 * Updated dependencies
 * Updated distroless version

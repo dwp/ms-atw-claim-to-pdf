@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.5</version>
+        <version>3.4.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>uk.gov.dwp.health.atw</groupId>
     <artifactId>ms-claim-to-pdf</artifactId>
-    <version>1.26.0</version>
+    <version>1.27.0</version>
     <name>ms-claim-to-pdf</name>
     <description>Convert ms-claim json in to form layout and upload to S3</description>
     <properties>
